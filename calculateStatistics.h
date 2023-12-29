@@ -10,6 +10,7 @@ struct Studentas {
     std::vector<int> balai;
     double vidurkis;
     double mediana;
+    int egz;
 };
 
 void calculateStatistics(Studentas& studentas);
