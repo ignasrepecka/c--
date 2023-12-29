@@ -10,6 +10,11 @@
 using namespace std;
 
 void printResults(vector<Studentas>& studentai, int a) {
+    cout << setw(15) << left << "Vardas"
+         << setw(15) << left << "Pavade"
+         << setw(15) << left << "Vid/Med:"
+         << endl;
+    cout << "------------------------------------------------------------------" << endl;
     for(Studentas& studentas : studentai) {
         if (a == 1) {
             cout << setw(15) << left << studentas.vardas
