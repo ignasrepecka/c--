@@ -5,32 +5,10 @@
 #include <algorithm>
 #include <iomanip>
 #include <stdexcept>
+#include "calculateStatistics.h" // Include this
 #include "generuoti.h"
 
 using namespace std;
-
-struct Studentas {
-    string vardas;
-    string pavarde;
-    vector<int> balai;
-    double vidurkis;
-    double mediana;
-};
-
-void calculateStatistics(Studentas& studentas) {
-    double suma = 0;
-    for(int j : studentas.balai) {
-        suma += j;
-    }
-
-    sort(studentas.balai.begin(), studentas.balai.end());
-    if ((studentas.balai.size()) % 2 == 0)
-        studentas.mediana = (studentas.balai[studentas.balai.size()/2 - 1] + studentas.balai[studentas.balai.size()/2]) / 2.0;
-    else
-        studentas.mediana = studentas.balai[studentas.balai.size()/2];
-
-    studentas.vidurkis = suma/studentas.balai.size();
-}
 
 void printResults(vector<Studentas>& studentai, int a) {
     for(Studentas& studentas : studentai) {
@@ -76,3 +54,4 @@ void generuoti(int n, int a) {
     // Then, call the function to sort and print the results
     printResults(studentai, a);
 }
+
