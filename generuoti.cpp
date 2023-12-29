@@ -17,10 +17,41 @@ struct Studentas {
     double mediana;
 };
 
+void calculateStatistics(Studentas& studentas) {
+    double suma = 0;
+    for(int j : studentas.balai) {
+        suma += j;
+    }
+
+    sort(studentas.balai.begin(), studentas.balai.end());
+    if ((studentas.balai.size()) % 2 == 0)
+        studentas.mediana = (studentas.balai[studentas.balai.size()/2 - 1] + studentas.balai[studentas.balai.size()/2]) / 2.0;
+    else
+        studentas.mediana = studentas.balai[studentas.balai.size()/2];
+
+    studentas.vidurkis = suma/studentas.balai.size();
+}
+
+void printResults(vector<Studentas>& studentai, int a) {
+    for(Studentas& studentas : studentai) {
+        if (a == 1) {
+            cout << setw(15) << left << studentas.vardas
+                 << setw(15) << left << studentas.pavarde
+                 << setw(15) << left << fixed << setprecision(2) << studentas.vidurkis << endl;
+        } else if (a == 2) {
+            cout << setw(15) << left << studentas.vardas
+                 << setw(15)<< left << studentas.pavarde
+                 << setw(15) << left << studentas.mediana << endl;
+        } else {
+            throw runtime_error("Neteisingas pasirinkimas a");
+        }
+    }
+}
+
 void generuoti(int n, int a) {
     vector<Studentas> studentai(n);
 
-    
+    // First, generate all the student data
     for(int i = 0; i < n; ++i) {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Vardas:" ;
@@ -38,30 +69,10 @@ void generuoti(int n, int a) {
         int egz = rand() % 10 + 1;
         studentai[i].balai.push_back(egz);
 
-        double suma = 0;
-        for(int j : studentai[i].balai) {
-            suma += j;
-        }
-
-        sort(studentai[i].balai.begin(), studentai[i].balai.end());
-        if ((studentai[i].balai.size()) % 2 == 0)
-            studentai[i].mediana = (studentai[i].balai[studentai[i].balai.size()/2 - 1] + studentai[i].balai[studentai[i].balai.size()/2]) / 2.0;
-        else
-            studentai[i].mediana = studentai[i].balai[studentai[i].balai.size()/2];
-
-        studentai[i].vidurkis = suma/studentai[i].balai.size();
+        // Calculate statistics for each student
+        calculateStatistics(studentai[i]);
     }
 
-   
-    for(int i = 0; i < n; ++i) {
-        if (a == 1) {
-            cout << setw(15) << left << studentai[i].vardas << setw(15) << left << studentai[i].pavarde << setw(15) << left << fixed << setprecision(2) << studentai[i].vidurkis;
-        } else if (a == 2) {
-            cout << setw(15) << left << studentai[i].vardas << setw(15)<< left << studentai[i].pavarde << setw(15) << left << studentai[i].mediana;
-            cout << endl;
-        } else {
-            throw runtime_error("Neteisingas pasirinkimas a");
-        }
-    }
+    // Then, call the function to sort and print the results
+    printResults(studentai, a);
 }
-
