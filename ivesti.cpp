@@ -5,17 +5,10 @@
 #include <algorithm>
 #include <iomanip>
 #include <stdexcept>
-#include "ivesti.h"
+#include "calculateStatistics.h" // Include this
+#include "printResults.h" // Include this
 
 using namespace std;
-
-struct Studentas {
-    string vardas;
-    string pavarde;
-    vector<int> balai;
-    double vidurkis;
-    double mediana;
-};
 
 void ivestiStudentus(int n, int a) {
     vector<Studentas> studentai(n);
@@ -46,28 +39,10 @@ void ivestiStudentus(int n, int a) {
         studentai[i].balai.push_back(egz);
         cout << endl;
 
-        double suma = 0;
-        for(int j : studentai[i].balai) {
-            suma += j;
-        }
-
-        sort(studentai[i].balai.begin(), studentai[i].balai.end());
-        if ((studentai[i].balai.size()) % 2 == 0)
-            studentai[i].mediana = (studentai[i].balai[studentai[i].balai.size()/2 - 1] + studentai[i].balai[studentai[i].balai.size()/2]) / 2.0;
-        else
-            studentai[i].mediana = studentai[i].balai[studentai[i].balai.size()/2];
-
-        studentai[i].vidurkis = suma/studentai[i].balai.size();
+        // Call calculateStatistics function for each student
+        calculateStatistics(studentai[i]);
     }
 
-    for(const auto& s : studentai) {
-        if (a == 1) {
-            cout << setw(15) << left << s.vardas << setw(15) << left << s.pavarde << setw(15) << left << fixed << setprecision(2) << s.vidurkis;
-        } else if (a == 2) {
-            cout << setw(15) << left << s.vardas << setw(15)<< left << s.pavarde << setw(15) << left << s.mediana;
-            cout << endl;
-        } else {
-            throw runtime_error("Neteisingas pasirinkimas a");
-        }
-    }
+    // Call printResults function to print the results
+    printResults(studentai, a);
 }
