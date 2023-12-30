@@ -12,8 +12,8 @@
 
 using namespace std;
 
-void isFailo(std::vector<Studentas>& studentai, int a) {
-    ifstream failas("C:\\Users\\Administrator\\Desktop\\studentai1000000.txt");
+void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
+    ifstream failas(filename);
     if (!failas.is_open()) {
         throw runtime_error("Nepavyko atidaryti failo");
     }
@@ -49,6 +49,19 @@ void isFailo(std::vector<Studentas>& studentai, int a) {
         studentai.push_back(studentas);
     }
     failas.close();
+
+    // Split the students into two files
+    ofstream failas1("kietiakai" + to_string(studentai.size()) + ".txt");
+    ofstream failas2("vargsiukai" + to_string(studentai.size()) + ".txt");
+    for (const Studentas& studentas : studentai) {
+        if (studentas.vidurkis >= 5) {
+            failas1 << studentas.vardas << "\t" << studentas.pavarde << "\t" << studentas.vidurkis << endl;
+        } else {
+            failas2 << studentas.vardas << "\t" << studentas.pavarde << "\t" << studentas.vidurkis << endl;
+        }
+    }
+    failas1.close();
+    failas2.close();
 
     printResults(studentai, a);
 }
