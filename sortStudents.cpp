@@ -1,6 +1,7 @@
 #include "sortStudents.h"
 #include <algorithm>
 #include <iostream>
+#include <chrono>
 
 bool compareByName(const Studentas& a, const Studentas& b) {
     return a.vardas < b.vardas;
@@ -20,8 +21,16 @@ bool compareByMedian(const Studentas& a, const Studentas& b) {
 
 void sortStudents(std::vector<Studentas>& studentai) {
     int sortOption;
-    std::cout << "Kaip norite rūšiuoti studentus?: 1 - Pagal vardą, 2 - Pagal pavardę, 3 - Pagal vidurkį, 4 - Pagal medianą: ";
+    std::cout << "Kaip norite rusiuoti studentus?: 1 - Pagal varda, 2 - Pagal pavarde, 3 - Pagal vidurki, 4 - Pagal mediana: ";
     std::cin >> sortOption;
+
+    // Declare timing variables
+    std::chrono::high_resolution_clock::time_point start;
+    std::chrono::high_resolution_clock::time_point stop;
+    std::chrono::duration<double, std::micro> duration;
+
+    // Start timing
+    start = std::chrono::high_resolution_clock::now();
 
     switch (sortOption) {
         case 1:
@@ -40,4 +49,11 @@ void sortStudents(std::vector<Studentas>& studentai) {
             std::cout << "Netinkamas rūšiavimo pasirinkimas. Prašome pasirinkti nuo 1 iki 4." << std::endl;
             break;
     }
+
+    // Stop timing and calculate the duration
+    stop = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+    std::cout << "Rusiavimo laikas: "
+         << duration.count() << " microseconds" << std::endl;
 }
