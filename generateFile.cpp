@@ -5,22 +5,23 @@
 
 using namespace std;
 
-void generateFile(int n) {
-    std::ofstream failas("studentai.txt");
+void generateFile(int n, int fileNum) {
+    string filename = "studentai" + to_string(n) + ".txt";
+    ofstream failas(filename);
     if (!failas.is_open()) {
-        std::cerr << "Nepavyko atidaryti failo" << std::endl;
+        cerr << "Nepavyko atidaryti failo" << endl;
         exit(1);
     }
 
     // Write the header
-    failas << "Vardas\tPavarde\tND1\tND2\tEgz." << std::endl;
+    failas << "Vardas\tPavarde\tND1\tND2\tEgz." << endl;
 
     for (int i = 1; i <= n; ++i) {
         failas << "Vardas" << i << "\tPavarde" << i;
         for (int j = 0; j < 2; ++j) {
             failas << "\t" << rand() % 10 + 1;
         }
-        failas << "\t" << rand() % 10 + 1 << std::endl;  // Exam score
+        failas << "\t" << rand() % 10 + 1 << endl;  // Exam score
     }
 
     failas.close();
