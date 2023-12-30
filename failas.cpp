@@ -9,8 +9,10 @@
 #include "failas.h"
 #include "calculateStatistics.h"
 #include "printResults.h"
+#include "sortStudents.h"
 
 using namespace std;
+
 
 void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     studentai.clear();  // Clear the vector
@@ -50,6 +52,8 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
         studentai.push_back(studentas);
     }
     failas.close();
+
+    sortStudents(studentai, true);
 
     // Split the students into two files
     ofstream failas1("kietiakai" + to_string(studentai.size()) + ".txt");
