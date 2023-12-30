@@ -6,6 +6,8 @@
 
 bool compareByName(const Studentas& a, const Studentas& b);
 bool compareBySurname(const Studentas& a, const Studentas& b);
-void sortStudents(std::vector<Studentas>& studentai, bool sortByName);
+bool compareByAverage(const Studentas& a, const Studentas& b);
+bool compareByMedian(const Studentas& a, const Studentas& b);
+void sortStudents(std::vector<Studentas>& studentai);
 
 #endif
