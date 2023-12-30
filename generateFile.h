@@ -4,6 +4,6 @@
 #include <vector>
 #include <string>
 
-void generateFile(int n);
+void generateFile(int n, int fileNum);
 
 #endif // GENERATEFILE_H_INCLUDED
