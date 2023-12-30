@@ -34,7 +34,17 @@ int main() {
                 generateFile(n, i);
             }
         } else {
-            isFailo(studentai, a);
+            int fileNum;
+            cout << "Kiek failų norite skaityti?: ";
+            cin >> fileNum;
+
+            for (int i = 1; i <= fileNum; ++i) {
+                int n;
+                cout << "Kiek studentų yra " << i << "-ajame faile?: ";
+                cin >> n;
+                string filename = "C:\\Users\\Administrator\\Desktop\\cc++++\\v0.2\\studentai" + to_string(n) + ".txt";
+                isFailo(studentai, a, filename);
+            }
         }
     } catch (const exception& e) {
         cerr << "Klaida: " << e.what() << endl;
