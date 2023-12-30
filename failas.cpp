@@ -13,6 +13,7 @@
 using namespace std;
 
 void isFailo(std::vector<Studentas>& studentai, int a) {
+    studentai.clear();  // Clear the vector
     ifstream failas("C:\\Users\\Administrator\\Desktop\\studentai10000.txt");
     if (!failas.is_open()) {
         throw runtime_error("Nepavyko atidaryti failo");
