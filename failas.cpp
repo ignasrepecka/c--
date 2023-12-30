@@ -31,7 +31,7 @@ void isFailo(std::vector<Studentas>& studentai, int a) {
         vector<int> balai;
         int j;
         // Read 15 homework scores
-        for(int i = 0; i < 15; i++) {
+        for(int i = 0; i < 3; i++) {
             iss >> j;
             balai.push_back(j);
         }
