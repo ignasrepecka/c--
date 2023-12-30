@@ -6,13 +6,13 @@
 #include <stdexcept>
 #include <iomanip>
 #include <algorithm>
+#include <chrono>  // Include the chrono library
 #include "failas.h"
 #include "calculateStatistics.h"
-#include "printResults.h"
 #include "sortStudents.h"
 
 using namespace std;
-
+using namespace std::chrono;  // Use the chrono namespace
 
 void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     studentai.clear();  // Clear the vector
@@ -26,6 +26,10 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     getline(failas, header);
 
     string line;
+
+    // Start timing
+    auto start = high_resolution_clock::now();
+
     while (getline(failas, line)) {
         istringstream iss(line);
         string vardas, pavarde;
@@ -51,9 +55,22 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
         calculateStatistics(studentas);
         studentai.push_back(studentas);
     }
+
+    // Stop timing and calculate the duration
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    cout << "Duomenu nuskaitymas is failu trukme: "
+         << duration.count() << " microseconds" << endl;
+    cout << endl;
+
     failas.close();
 
+
     sortStudents(studentai);
+
+    // Start timing
+    start = high_resolution_clock::now();
 
     // Split the students into two files
     ofstream failas1("kietiakai" + to_string(studentai.size()) + ".txt");
@@ -75,4 +92,12 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     }
     failas1.close();
     failas2.close();
+
+        // Stop timing and calculate the duration
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop - start);
+
+    cout << "Surusiuotų studentu isvedimas i 'kietiakai' ir 'vargsiukai' trukme: "
+         << duration.count() << " microseconds" << endl;
+    cout << endl;
 }
