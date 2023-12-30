@@ -23,10 +23,16 @@ int main() {
 
     try {
         if (a == 3) {
-            int n;
-            cout << "Kiek studentu?: ";
-            cin >> n;
-            generateFile(n);
+            int fileNum;
+            cout << "Kiek failų norite generuoti?: ";
+            cin >> fileNum;
+
+            for (int i = 1; i <= fileNum; ++i) {
+                int n;
+                cout << "Kiek studentų bus " << i << "-ajame faile?: ";
+                cin >> n;
+                generateFile(n, i);
+            }
         } else {
             isFailo(studentai, a);
         }
