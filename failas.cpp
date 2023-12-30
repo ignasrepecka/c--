@@ -53,7 +53,7 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     }
     failas.close();
 
-    sortStudents(studentai, true);
+    sortStudents(studentai);
 
     // Split the students into two files
     ofstream failas1("kietiakai" + to_string(studentai.size()) + ".txt");
