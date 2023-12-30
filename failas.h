@@ -3,7 +3,8 @@
 
 #include <vector>
 #include <string>
+#include "calculateStatistics.h"
 
-void isFailo(int a);
+void isFailo(std::vector<Studentas>& studentai, int a, const std::string& filename);
 
 #endif // FAILAS_H
