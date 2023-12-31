@@ -19,7 +19,9 @@ int main() {
     int a;
     cout << "Ka pasirinksite?: 1 - Vidurkis, 2 - Mediana, 3 - Generuoti failus: ";
     cin >> a;
-
+    int b;
+    cout << "koki konteineri naudoti?: 1 - Vector, 2 - List: ";
+    cin >> b;
 
     vector<Studentas> studentai;
     list<Studentasl> studentail;
@@ -27,27 +29,30 @@ int main() {
     try {
         if (a == 3) {
             int fileNum;
-            cout << "Kiek failų norite generuoti?: ";
+            cout << "Kiek failu norite generuoti?: ";
             cin >> fileNum;
 
             for (int i = 1; i <= fileNum; ++i) {
                 int n;
-                cout << "Kiek studentų bus " << i << "-ajame faile?: ";
+                cout << "Kiek studentu bus " << i << "-ajame faile?: ";
                 cin >> n;
                 generateFile(n, i);
             }
         } else {
             int fileNum;
-            cout << "Kiek failų norite skaityti?: ";
+            cout << "Kiek failu norite skaityti?: ";
             cin >> fileNum;
 
             for (int i = 1; i <= fileNum; ++i) {
                 int n;
-                cout << "Kiek studentų yra " << i << "-ajame faile?: ";
+                cout << "Kiek studentu yra " << i << "-ajame faile?: ";
                 cin >> n;
                 string filename = "C:\\Users\\Administrator\\Desktop\\cc++++\\v0.3\\studentai" + to_string(n) + ".txt";
-                listIsFailo(studentail, a, filename);
-
+                if (b==1) {
+                    isFailo(studentai, a, filename);
+                } else {
+                    listIsFailo(studentail, a, filename);
+                }
 
             }
         }
