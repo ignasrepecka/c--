@@ -7,8 +7,9 @@
 #include "studentai.h"
 #include "failas.h"
 #include "calculateStatistics.h"
-#include "printResults.h"
 #include "generateFile.h"
+#include "listfailas.h"
+#include "listCalculateStatistics.h"
 
 using namespace std;
 
@@ -16,10 +17,12 @@ int main() {
     srand(time(0));
 
     int a;
-    cout << "Ką pasirinksite?: 1 - Vidurkis, 2 - Mediana, 3 - Generuoti failus: ";
+    cout << "Ka pasirinksite?: 1 - Vidurkis, 2 - Mediana, 3 - Generuoti failus: ";
     cin >> a;
 
+
     vector<Studentas> studentai;
+    list<Studentasl> studentail;
 
     try {
         if (a == 3) {
@@ -42,8 +45,10 @@ int main() {
                 int n;
                 cout << "Kiek studentų yra " << i << "-ajame faile?: ";
                 cin >> n;
-                string filename = "C:\\Users\\Administrator\\Desktop\\cc++++\\v0.2\\studentai" + to_string(n) + ".txt";
-                isFailo(studentai, a, filename);
+                string filename = "C:\\Users\\Administrator\\Desktop\\cc++++\\v0.3\\studentai" + to_string(n) + ".txt";
+                listIsFailo(studentail, a, filename);
+
+
             }
         }
     } catch (const exception& e) {
