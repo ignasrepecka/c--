@@ -19,9 +19,6 @@ int main() {
     int a;
     cout << "Ka pasirinksite?: 1 - Vidurkis, 2 - Mediana, 3 - Generuoti failus: ";
     cin >> a;
-    int b;
-    cout << "koki konteineri naudoti?: 1 - Vector, 2 - List: ";
-    cin >> b;
 
     vector<Studentas> studentai;
     list<Studentasl> studentail;
@@ -44,6 +41,9 @@ int main() {
             cin >> fileNum;
 
             for (int i = 1; i <= fileNum; ++i) {
+                int b;
+                cout << "koki konteineri naudoti?: 1 - Vector, 2 - List: ";
+                cin >> b;
                 int n;
                 cout << "Kiek studentu yra " << i << "-ajame faile?: ";
                 cin >> n;
