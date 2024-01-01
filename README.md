@@ -1,3 +1,7 @@
+Installed Physical Memory (RAM)	8,00 GB
+Processor	Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz, 3192 Mhz, 4 Core(s), 4 Logical Processor(s)
+SSD	256gb
+
 testai su vector:
 
 ![image](https://github.com/ignasrepecka/c--/assets/146369153/b1f7a126-edc7-4ecc-a77b-0f72ec7d2425)
