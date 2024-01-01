@@ -101,3 +101,10 @@ Duomenu nuskaitymas:101922986 ms
 Rusiavimas:17082600 ms
 
 Isvedimas i kietiakai ir vargsiukai:64653483 ms
+![image](https://github.com/ignasrepecka/c--/assets/146369153/194dbd15-b089-423c-b6d4-681dbbc35b05)
+![image](https://github.com/ignasrepecka/c--/assets/146369153/edf1056e-b456-4553-8c44-a1f9b13ae4de)
+![image](https://github.com/ignasrepecka/c--/assets/146369153/43af7a60-1f88-4ca6-85e5-7512950e2b8d)
+![image](https://github.com/ignasrepecka/c--/assets/146369153/bda30e52-4440-4db0-90cf-93f8a7d77c53)
+
+
+
