@@ -54,6 +54,8 @@ void sortStudents(std::vector<Studentas>& studentai) {
     stop = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
 
-    std::cout << "Rusiavimo laikas: "
+    std::cout << "Rusiavimas";
+    std::cout << std::endl;
+    std::cout << "Trukme: "
          << duration.count() << " microseconds" << std::endl;
 }
