@@ -1,5 +1,7 @@
 Installed Physical Memory (RAM)	8,00 GB
+
 Processor	Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz, 3192 Mhz, 4 Core(s), 4 Logical Processor(s)
+
 SSD	256gb
 
 testai su vector:
