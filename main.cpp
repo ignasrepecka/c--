@@ -39,7 +39,8 @@ int main() {
             int fileNum;
             cout << "Kiek failu norite skaityti?: ";
             cin >> fileNum;
-
+            cout << "--------------------------------------------------------------------------";
+            cout << endl;
             for (int i = 1; i <= fileNum; ++i) {
                 int b;
                 cout << "koki konteineri naudoti?: 1 - Vector, 2 - List: ";
