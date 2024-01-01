@@ -60,9 +60,10 @@ void listIsFailo(std::list<Studentasl>& studentail, int a, const string& filenam
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
 
-    cout << "Duomenu nuskaitymas is failu trukme: "
-         << duration.count() << " microseconds" << endl;
+    cout << "Duomenu nuskaitymas is failu";
     cout << endl;
+    cout << "Trukme: "
+         << duration.count() << " microseconds" << endl;
 
     failas.close();
 
@@ -97,7 +98,10 @@ void listIsFailo(std::list<Studentasl>& studentail, int a, const string& filenam
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
 
-    cout << "Surusiuotų studentu isvedimas i 'kietiakai' ir 'vargsiukai' trukme: "
+    cout << "Surusiuotu studentu isvedimas i 'kietiakai' ir 'vargsiukai'";
+    cout << endl;
+    cout << "Trukme: "
          << duration.count() << " microseconds" << endl;
+    cout << "--------------------------------------------------------------------------";
     cout << endl;
 }
