@@ -106,5 +106,14 @@ Isvedimas i kietiakai ir vargsiukai:64653483 ms
 ![image](https://github.com/ignasrepecka/c--/assets/146369153/43af7a60-1f88-4ca6-85e5-7512950e2b8d)
 ![image](https://github.com/ignasrepecka/c--/assets/146369153/bda30e52-4440-4db0-90cf-93f8a7d77c53)
 
+Išvados:
 
+Matome jog šioje programoje
 
+Nuskaitymas greitesnis su vector
+
+Rusiavimas greitesnis su list
+
+Išvedimas panašaus greičio
+
+Tačiau su 10mil studentų pasibaigė atmintis naudojant vector
