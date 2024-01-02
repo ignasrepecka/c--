@@ -37,7 +37,7 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
 
         vector<int> balai;
         int j;
-        // Read 15 homework scores
+
         for(int i = 0; i < 3; i++) {
             iss >> j;
             balai.push_back(j);
@@ -67,34 +67,74 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
 
     failas.close();
 
+    int sortOption;
+    std::cout << "Kaip norite rusiuoti studentus?: 1 - Pagal varda, 2 - Pagal pavarde, 3 - Pagal vidurki, 4 - Pagal mediana: ";
+    std::cin >> sortOption;
 
-    sortStudents(studentai);
+    // Create two new vectors
+    vector<Studentas> vargsiukai;
+    vector<Studentas> kietiakai;
+
+    // Split the students into two vectors
+    
+    for (const Studentas& studentas : studentai) {
+        if (a == 1) {
+            if (studentas.vidurkis >= 5) {
+                kietiakai.push_back(studentas);
+            } else {
+                vargsiukai.push_back(studentas);
+            }
+        } else if (a == 2) {
+            if (studentas.mediana >= 5) {
+                kietiakai.push_back(studentas);
+            } else {
+                vargsiukai.push_back(studentas);
+            }
+        }
+    }
+    
+
+    start = high_resolution_clock::now();
+
+    // Sort the students
+    sortStudents(kietiakai, sortOption);
+    sortStudents(vargsiukai, sortOption);
+
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop - start);
+
+    std::cout << "Rusiavimas";
+    std::cout << std::endl;
+    std::cout << "Trukme: "
+         << duration.count() << " microseconds" << std::endl;
+
 
     // Start timing
     start = high_resolution_clock::now();
 
-    // Split the students into two files
+    // Write the students to files
     ofstream failas1("kietiakai" + to_string(studentai.size()) + ".txt");
     ofstream failas2("vargsiukai" + to_string(studentai.size()) + ".txt");
-    for (const Studentas& studentas : studentai) {
+    for (const Studentas& studentas : kietiakai) {
+        failas1 << studentas.vardas << "\t" << studentas.pavarde << "\t";
         if (a == 1) {
-            if (studentas.vidurkis >= 5) {
-                failas1 << studentas.vardas << "\t" << studentas.pavarde << "\t" << studentas.vidurkis << endl;
-            } else {
-                failas2 << studentas.vardas << "\t" << studentas.pavarde << "\t" << studentas.vidurkis << endl;
-            }
+            failas1 << studentas.vidurkis << endl;
         } else if (a == 2) {
-            if (studentas.mediana >= 5) {
-                failas1 << studentas.vardas << "\t" << studentas.pavarde << "\t" << studentas.mediana << endl;
-            } else {
-                failas2 << studentas.vardas << "\t" << studentas.pavarde << "\t" << studentas.mediana << endl;
-            }
+            failas1 << studentas.mediana << endl;
+        }
+    }
+    for (const Studentas& studentas : vargsiukai) {
+        failas2 << studentas.vardas << "\t" << studentas.pavarde << "\t";
+            if (a == 1) {
+        failas2 << studentas.vidurkis << endl;
+            } else if (a == 2) {
+        failas2 << studentas.mediana << endl;
         }
     }
     failas1.close();
     failas2.close();
 
-        // Stop timing and calculate the duration
+    // Stop timing and calculate the duration
     stop = high_resolution_clock::now();
     duration = duration_cast<microseconds>(stop - start);
 
@@ -104,5 +144,4 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
          << duration.count() << " microseconds" << endl;
     cout << "--------------------------------------------------------------------------";
     cout << endl;
-
 }
