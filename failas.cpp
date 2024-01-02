@@ -73,10 +73,10 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
 
     // Create two new vectors
     vector<Studentas> vargsiukai;
-    vector<Studentas> kietiakai;
+//    vector<Studentas> kietiakai;
 
     // Split the students into two vectors
-    
+/*
     for (const Studentas& studentas : studentai) {
         if (a == 1) {
             if (studentas.vidurkis >= 5) {
@@ -92,12 +92,20 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
             }
         }
     }
-    
+*/
+    studentai.erase(std::remove_if(studentai.begin(), studentai.end(), [&](const Studentas& studentas) {
+        bool isVargsiukas = (a == 1 && studentas.vidurkis < 5) || (a == 2 && studentas.mediana < 5);
+        if (isVargsiukas) {
+            vargsiukai.push_back(studentas);
+        }
+        return isVargsiukas;
+    }), studentai.end());
 
     start = high_resolution_clock::now();
 
     // Sort the students
-    sortStudents(kietiakai, sortOption);
+    //sortStudents(kietiakai, sortOption);
+    sortStudents(studentai, sortOption);
     sortStudents(vargsiukai, sortOption);
 
     stop = high_resolution_clock::now();
@@ -115,7 +123,7 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     // Write the students to files
     ofstream failas1("kietiakai" + to_string(studentai.size()) + ".txt");
     ofstream failas2("vargsiukai" + to_string(studentai.size()) + ".txt");
-    for (const Studentas& studentas : kietiakai) {
+    for (const Studentas& studentas : /*kietiakai*/studentai) {
         failas1 << studentas.vardas << "\t" << studentas.pavarde << "\t";
         if (a == 1) {
             failas1 << studentas.vidurkis << endl;
