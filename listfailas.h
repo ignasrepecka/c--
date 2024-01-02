@@ -5,6 +5,6 @@
 #include <string>
 #include "listCalculateStatistics.h"
 
-void listIsFailo(std::list<Studentasl>& studentai, int a, const std::string& filename);
+void listIsFailo(std::list<Studentasl>& studentail, int a, const std::string& filename);
 
 #endif // LISTFAILAS_H_INCLUDED
