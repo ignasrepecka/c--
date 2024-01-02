@@ -71,7 +71,7 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     failas.close();
 
     int Strat;
-    std::cout << "Kokia Strategija naudoti?: 1 - Strategija1, 2 - Strategija2: ";
+    std::cout << "Kokia Strategija naudoti?: 1 - Strategija1, 2 - Strategija2, 3 - Strategija3: ";
     std::cin >> Strat;
 
     int sortOption;
