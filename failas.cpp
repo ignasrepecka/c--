@@ -10,11 +10,14 @@
 #include "failas.h"
 #include "calculateStatistics.h"
 #include "sortStudents.h"
+#include "strat.h"
 
 using namespace std;
 using namespace std::chrono;  // Use the chrono namespace
 
 void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
+    std::vector<Studentas> vargsiukai;
+    std::vector<Studentas> kietiakai;
     studentai.clear();  // Clear the vector
     ifstream failas(filename);
     if (!failas.is_open()) {
@@ -67,9 +70,6 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
 
     failas.close();
 
-    vector<Studentas> vargsiukai;
-    vector<Studentas> kietiakai;
-
     int Strat;
     std::cout << "Kokia Strategija naudoti?: 1 - Strategija1, 2 - Strategija2: ";
     std::cin >> Strat;
@@ -78,56 +78,7 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     std::cout << "Kaip norite rusiuoti studentus?: 1 - Pagal varda, 2 - Pagal pavarde, 3 - Pagal vidurki, 4 - Pagal mediana: ";
     std::cin >> sortOption;
 
-    if (Strat==1){
-        for (const Studentas& studentas : studentai) {
-            if (a == 1) {
-                if (studentas.vidurkis >= 5) {
-                    kietiakai.push_back(studentas);
-                } else {
-                    vargsiukai.push_back(studentas);
-                }
-            } else if (a == 2) {
-                if (studentas.mediana >= 5) {
-                    kietiakai.push_back(studentas);
-                } else {
-                    vargsiukai.push_back(studentas);
-                }
-            }
-        }
-        start = high_resolution_clock::now();
-
-        sortStudents(kietiakai, sortOption);
-        sortStudents(vargsiukai, sortOption);
-
-        stop = high_resolution_clock::now();
-        duration = duration_cast<microseconds>(stop - start);
-
-        std::cout << "Rusiavimas";
-        std::cout << std::endl;
-        std::cout << "Trukme: "
-            << duration.count() << " microseconds" << std::endl;
-    } else {
-        studentai.erase(std::remove_if(studentai.begin(), studentai.end(), [&](const Studentas& studentas) {
-            bool isVargsiukas = (a == 1 && studentas.vidurkis < 5) || (a == 2 && studentas.mediana < 5);
-            if (isVargsiukas) {
-                vargsiukai.push_back(studentas);
-            }
-            return isVargsiukas;
-        }), studentai.end());
-        start = high_resolution_clock::now();
-
-        sortStudents(studentai, sortOption);
-        sortStudents(vargsiukai, sortOption);
-
-        stop = high_resolution_clock::now();
-        duration = duration_cast<microseconds>(stop - start);
-
-        std::cout << "Rusiavimas";
-        std::cout << std::endl;
-        std::cout << "Trukme: "
-            << duration.count() << " microseconds" << std::endl;
-
-    }
+    strat(studentai, a, Strat, sortOption, kietiakai, vargsiukai);
 
     // Start timing
     start = high_resolution_clock::now();
