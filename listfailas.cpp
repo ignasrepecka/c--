@@ -10,11 +10,14 @@
 #include "listfailas.h"
 #include "listCalculateStatistics.h"
 #include "listSortStudents.h"
+#include "listStrat.h"
 
 using namespace std;
 using namespace std::chrono;  // Use the chrono namespace
 
 void listIsFailo(std::list<Studentasl>& studentail, int a, const string& filename) {
+    std::list<Studentasl> vargsiukai;
+    std::list<Studentasl> kietiakai;
     studentail.clear();  // Clear the list
     ifstream failas(filename);
     if (!failas.is_open()) {
@@ -37,7 +40,7 @@ void listIsFailo(std::list<Studentasl>& studentail, int a, const string& filenam
 
         list<int> balai;
         int j;
-        // Read 15 homework scores
+
         for(int i = 0; i < 3; i++) {
             iss >> j;
             balai.push_back(j);
@@ -67,28 +70,41 @@ void listIsFailo(std::list<Studentasl>& studentail, int a, const string& filenam
 
     failas.close();
 
+    int Strat;
+    std::cout << "Kokia Strategija naudoti?: 1 - Strategija1, 2 - Strategija2: ";
+    std::cin >> Strat;
 
-    listSortStudents(studentail);
+    int sortOption;
+    std::cout << "Kaip norite rusiuoti studentus?: 1 - Pagal varda, 2 - Pagal pavarde, 3 - Pagal vidurki, 4 - Pagal mediana: ";
+    std::cin >> sortOption;
+
+    listStrat(studentail, a, Strat, sortOption, kietiakai, vargsiukai);
 
     // Start timing
     start = high_resolution_clock::now();
 
+    int size = (Strat == 1) ? studentail.size() : (studentail.size() + vargsiukai.size());
+
     // Split the students into two files
-    ofstream failas1("kietiakai" + to_string(studentail.size()) + ".txt");
-    ofstream failas2("vargsiukai" + to_string(studentail.size()) + ".txt");
-    for (const Studentasl& studentasl : studentail) {
+    ofstream failas1("kietiakai" + to_string(size) + ".txt");
+    ofstream failas2("vargsiukai" + to_string(size) + ".txt");
+
+    list<Studentasl>& target = (Strat == 1) ? kietiakai : studentail;
+
+    for (const Studentasl& studentasl : target) {
+        failas1 << studentasl.vardas << "\t" << studentasl.pavarde << "\t";
         if (a == 1) {
-            if (studentasl.vidurkis >= 5) {
-                failas1 << studentasl.vardas << "\t" << studentasl.pavarde << "\t" << studentasl.vidurkis << endl;
-            } else {
-                failas2 << studentasl.vardas << "\t" << studentasl.pavarde << "\t" << studentasl.vidurkis << endl;
-            }
+            failas1 << studentasl.vidurkis << endl;
         } else if (a == 2) {
-            if (studentasl.mediana >= 5) {
-                failas1 << studentasl.vardas << "\t" << studentasl.pavarde << "\t" << studentasl.mediana << endl;
-            } else {
-                failas2 << studentasl.vardas << "\t" << studentasl.pavarde << "\t" << studentasl.mediana << endl;
-            }
+            failas1 << studentasl.mediana << endl;
+        }
+    }
+    for (const Studentasl& studentasl : vargsiukai) {
+        failas2 << studentasl.vardas << "\t" << studentasl.pavarde << "\t";
+            if (a == 1) {
+        failas2 << studentasl.vidurkis << endl;
+            } else if (a == 2) {
+        failas2 << studentasl.mediana << endl;
         }
     }
     failas1.close();
