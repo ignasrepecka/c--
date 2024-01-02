@@ -8,6 +8,6 @@ bool compareByName(const Studentasl& a, const Studentasl& b);
 bool compareBySurname(const Studentasl& a, const Studentasl& b);
 bool compareByAverage(const Studentasl& a, const Studentasl& b);
 bool compareByMedian(const Studentasl& a, const Studentasl& b);
-void listSortStudents(std::list<Studentasl>& studentail);
+void listSortStudents(std::list<Studentasl>& studentail, int sortOption);
 
 #endif
