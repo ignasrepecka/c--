@@ -83,13 +83,13 @@ void isFailo(std::vector<Studentas>& studentai, int a, const string& filename) {
     // Start timing
     start = high_resolution_clock::now();
 
-    int size = (Strat == 1) ? studentai.size() : (studentai.size() + vargsiukai.size());
+    int size = (Strat == 1) or (Strat==3) ? studentai.size() : (studentai.size() + vargsiukai.size());
 
     // Write the students to files
     ofstream failas1("kietiakai" + to_string(size) + ".txt");
     ofstream failas2("vargsiukai" + to_string(size) + ".txt");
 
-    vector<Studentas>& target = (Strat == 1) ? kietiakai : studentai;
+    vector<Studentas>& target = (Strat == 1) or (Strat == 3) ? kietiakai : studentai;
 
     for (const Studentas& studentas : target) {
         failas1 << studentas.vardas << "\t" << studentas.pavarde << "\t";
