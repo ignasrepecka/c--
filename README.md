@@ -6,6 +6,8 @@ Processor	Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz, 3192 Mhz, 4 Core(s), 4 Logica
 
 SSD	256gb
 
+v0.3 Testai:
+
 testai su vector:
 
 ![image](https://github.com/ignasrepecka/c--/assets/146369153/b1f7a126-edc7-4ecc-a77b-0f72ec7d2425)
@@ -118,3 +120,13 @@ Rusiavimas greitesnis su list
 Išvedimas panašaus greičio
 
 Tačiau su 10mil studentų pasibaigė atmintis naudojant vector
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+v1.0
+Naudojimo instrukcija
+Pasidaryti folderį
+Sumeti .cpp failus į src
+Sumeti .h failus į include
+Įmesti CMakeLists.txt ir RunMe.bat failus į folderį
+Paleisti RunMe.bat
