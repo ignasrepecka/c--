@@ -130,3 +130,22 @@ Sumeti .cpp failus į src
 Sumeti .h failus į include
 Įmesti CMakeLists.txt ir RunMe.bat failus į folderį
 Paleisti RunMe.bat
+
+Spartos analizė
+
+Vector(1mil)	Nuskaitymas	Rusiavimas	Isvedimas
+Strat1	5826425	9170517	6251994
+Strat2	5496307	9113637	6213456
+Strat3	5504284	8866298	8448131
+![image](https://github.com/ignasrepecka/c--/assets/146369153/7be5005a-41ce-4202-b762-123da5ea6e43)
+
+![image](https://github.com/ignasrepecka/c--/assets/146369153/ff5e31bf-d279-4106-b126-3d68f8e98851)
+
+Vector(1mil)	Nuskaitymas	Rusiavimas	Isvedimas
+Strat1	5826425	9170517	6251994
+Strat2	5496307	9113637	6213456
+Strat3	5504284	8866298	8448131
+![image](https://github.com/ignasrepecka/c--/assets/146369153/a3293a1d-0ada-4e16-b4b9-04aee3717186)
+
+![image](https://github.com/ignasrepecka/c--/assets/146369153/fbd9732b-8d3d-49b6-9e95-258f720a89ec)
+
