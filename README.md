@@ -140,3 +140,9 @@ Spartos analizė
 
 ![image](https://github.com/ignasrepecka/c--/assets/146369153/fbd9732b-8d3d-49b6-9e95-258f720a89ec)
 
+Isvados:
+Vector tipo konteineryje nepavyko pagerinti spartos.
+Nesekmingai bandžiau optimizuoti 1 strategiją
+Teoriškai 2 strategija turėtu labiau neefektyvi
+
+List tipo konteineryje matomas nežymus paspartinimas naudojant optimizuotą 2 strategiją
