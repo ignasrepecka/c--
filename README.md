@@ -121,7 +121,6 @@ Išvedimas panašaus greičio
 
 Tačiau su 10mil studentų pasibaigė atmintis naudojant vector
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 v1.0
 Naudojimo instrukcija
