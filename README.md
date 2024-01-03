@@ -124,10 +124,15 @@ Tačiau su 10mil studentų pasibaigė atmintis naudojant vector
 
 v1.0
 Naudojimo instrukcija
+
 Pasidaryti folderį
+
 Sumeti .cpp failus į src
+
 Sumeti .h failus į include
+
 Įmesti CMakeLists.txt ir RunMe.bat failus į folderį
+
 Paleisti RunMe.bat
 
 Spartos analizė
